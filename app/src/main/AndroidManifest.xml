@@ -19,6 +19,7 @@
         <activity android:name=".Menu" android:exported="true"/>
         <activity android:name=".SubMenu" android:exported="true"/>
         <activity android:name=".SubMenuDs" android:exported="true"/>
+        <activity android:name=".SubMenuIC" android:exported="true"/>
         <activity android:name=".Monto" android:exported="true"/>
         <activity android:name=".Capital" android:exported="true"/>
         <activity android:name=".TasaInteres" android:exported="true"/>
@@ -26,5 +27,9 @@
         <activity android:name=".MontoDS" android:exported="true"/>
         <activity android:name=".PlazoAnticipado" android:exported="true"/>
         <activity android:name=".TasaDeDescuento" android:exported="true"/>
+        <activity android:name=".MontoIC" android:exported="true"/>
+        <activity android:name=".CapitalIC" android:exported="true"/>
+        <activity android:name=".PeriodosDeCapitalizacion" android:exported="true"/>
+        <activity android:name=".TasaDeInteresCapitalizable" android:exported="true"/>
     </application>
 </manifest>

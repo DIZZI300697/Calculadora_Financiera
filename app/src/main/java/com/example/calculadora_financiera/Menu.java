@@ -39,7 +39,7 @@ public class Menu extends AppCompatActivity {
                 intent = new Intent(this, SubMenuDs.class);
                 break;
             case "compound_interest":
-                // Añadir lógica para compound interest
+                intent = new Intent(this, SubMenuIC.class);
                 break;
             case "annuity":
                 // Añadir lógica para annuity
