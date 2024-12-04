@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,32 @@ public class Menu extends AppCompatActivity {
     }
 
     private void navigateToSubMenu(String calculationType) {
-        Intent intent = new Intent(this, SubMenu.class);
-        intent.putExtra("CALCULATION_TYPE", calculationType);
-        startActivity(intent);
+        Intent intent = null;
+
+        switch (calculationType) {
+            case "simple_interest":
+                intent = new Intent(this, SubMenu.class);
+                break;
+            case "simple_discount":
+                intent = new Intent(this, SubMenuDs.class);
+                break;
+            case "compound_interest":
+                // Añadir lógica para compound interest
+                break;
+            case "annuity":
+                // Añadir lógica para annuity
+                break;
+            case "amortization":
+                // Añadir lógica para amortization
+                break;
+            default:
+                // Manejar caso por defecto si es necesario
+                break;
+        }
+
+        if (intent != null) {
+            intent.putExtra("CALCULATION_TYPE", calculationType);
+            startActivity(intent);
+        }
     }
 }
