@@ -21,6 +21,7 @@
         <activity android:name=".SubMenuDs" android:exported="true"/>
         <activity android:name=".SubMenuIC" android:exported="true"/>
         <activity android:name=".SubMenuA" android:exported="true"/>
+        <activity android:name=".SubMenuAmor" android:exported="true"/>
         <activity android:name=".Monto" android:exported="true"/>
         <activity android:name=".Capital" android:exported="true"/>
         <activity android:name=".TasaInteres" android:exported="true"/>
@@ -35,5 +36,9 @@
         <activity android:name=".MontoA" android:exported="true"/>
         <activity android:name=".Renta" android:exported="true"/>
         <activity android:name=".NumRentas" android:exported="true"/>
+        <activity android:name=".Intereses" android:exported="true"/>
+        <activity android:name=".RentaAmor" android:exported="true"/>
+        <activity android:name=".Amortizacion" android:exported="true"/>
+        <activity android:name=".NuevoSaldo" android:exported="true"/>
     </application>
 </manifest>

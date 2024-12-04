@@ -45,10 +45,9 @@ public class Menu extends AppCompatActivity {
                 intent = new Intent(this, SubMenuA.class);
                 break;
             case "amortization":
-                // Añadir lógica para amortization si es necesario
+                intent = new Intent(this, SubMenuAmor.class);
                 break;
             default:
-                // Manejar caso por defecto si es necesario
                 break;
         }
 
