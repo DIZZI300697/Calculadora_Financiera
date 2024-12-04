@@ -9,7 +9,7 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);
+        setContentView(R.layout.menu);  // Asegúrate de que tu archivo XML se llama "menu.xml"
 
         setupMenuButtons();
     }
@@ -42,10 +42,10 @@ public class Menu extends AppCompatActivity {
                 intent = new Intent(this, SubMenuIC.class);
                 break;
             case "annuity":
-                // Añadir lógica para annuity
+                intent = new Intent(this, SubMenuA.class);
                 break;
             case "amortization":
-                // Añadir lógica para amortization
+                // Añadir lógica para amortization si es necesario
                 break;
             default:
                 // Manejar caso por defecto si es necesario
