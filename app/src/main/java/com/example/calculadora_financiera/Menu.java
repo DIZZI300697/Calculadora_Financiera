@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);  // Asegúrate de que tu archivo XML se llama "menu.xml"
+        setContentView(R.layout.menu);
 
         setupMenuButtons();
     }

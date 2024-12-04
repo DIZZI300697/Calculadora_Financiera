@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class SubMenu extends AppCompatActivity {
     private String calculationType;

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class Portada extends AppCompatActivity {
     @Override

@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class Plazos extends AppCompatActivity {
     private EditText etMonto, etCapital, etInteres;
@@ -32,7 +31,6 @@ public class Plazos extends AppCompatActivity {
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
 
-        // Mostrar la fórmula
         tvFormula.setText("Fórmula: n = (M - C) / (C * i)");
     }
 
@@ -44,9 +42,8 @@ public class Plazos extends AppCompatActivity {
         try {
             double monto = Double.parseDouble(etMonto.getText().toString());
             double capital = Double.parseDouble(etCapital.getText().toString());
-            double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
+            double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100;
 
-            // Calcular el plazo
             double plazos = (monto - capital) / (capital * tasaInteres);
 
             tvResultado.setText(String.format("Plazo (n) = %.2f años", plazos));

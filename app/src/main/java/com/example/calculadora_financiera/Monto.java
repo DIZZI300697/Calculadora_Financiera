@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class Monto extends AppCompatActivity {
     private EditText etCapital, etInteres, etPlazos;
@@ -39,7 +38,7 @@ public class Monto extends AppCompatActivity {
     private void calcularMonto() {
         try {
             double capital = Double.parseDouble(etCapital.getText().toString());
-            double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
+            double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100;
             double plazos = Double.parseDouble(etPlazos.getText().toString());
 
             double monto = capital * (1 + tasaInteres * plazos);

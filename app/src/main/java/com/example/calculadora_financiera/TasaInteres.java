@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.calculadora_financiera.R;
 
 public class TasaInteres extends AppCompatActivity {
     private EditText etMonto, etCapital, etPlazos;
@@ -32,7 +31,6 @@ public class TasaInteres extends AppCompatActivity {
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
 
-        // Mostrar la fórmula
         tvFormula.setText("Fórmula: i = (M - C) / (C * n)");
     }
 
@@ -46,8 +44,7 @@ public class TasaInteres extends AppCompatActivity {
             double capital = Double.parseDouble(etCapital.getText().toString());
             double plazos = Double.parseDouble(etPlazos.getText().toString());
 
-            // Calcular la tasa de interés
-            double tasaInteres = ((monto - capital) / (capital * plazos)) * 100; // Convertir a porcentaje
+            double tasaInteres = ((monto - capital) / (capital * plazos)) * 100;
 
             tvResultado.setText(String.format("Tasa de Interés (i) = %.2f%%", tasaInteres));
         } catch (NumberFormatException e) {
