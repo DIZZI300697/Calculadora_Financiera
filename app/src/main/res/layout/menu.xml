@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnInteresSimple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interés Simple (I.S.)"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnDescuentoSimple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descuento Simple (D.S.)"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnInteresCompuesto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interés Compuesto (I.C.)"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnAnualidades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anualidades"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnAmortizacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Amortización"
+        android:layout_marginBottom="8dp"/>
+</LinearLayout>
