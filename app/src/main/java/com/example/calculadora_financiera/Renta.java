@@ -30,8 +30,8 @@ public class Renta extends AppCompatActivity {
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
 
-        // Mostrar la fórmula
-        tvFormula.setText("Fórmula: R = M * (i/p) / [(1 + i/p) * ((1 + i/p)^np - 1) / (i/p)]");
+        // Mostrar la fórmula ajustada
+        tvFormula.setText("Fórmula: M = R (1 + i/p) ((1 + i/p)^n - 1) / (i/p)");
     }
 
     private void setupCalculateButton() {
@@ -40,17 +40,25 @@ public class Renta extends AppCompatActivity {
 
     private void calcularRenta() {
         try {
+            if (etMonto.getText().toString().isEmpty() ||
+                    etInteres.getText().toString().isEmpty() ||
+                    etPeriodos.getText().toString().isEmpty() ||
+                    etNumPeriodos.getText().toString().isEmpty()) {
+                throw new NumberFormatException();
+            }
+
             double monto = Double.parseDouble(etMonto.getText().toString());
             double interes = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
             double periodos = Double.parseDouble(etPeriodos.getText().toString());
             double numPeriodos = Double.parseDouble(etNumPeriodos.getText().toString());
 
             double factorInteres = interes / periodos;
-            double renta = (monto * factorInteres) / ((1 + factorInteres) * ((Math.pow(1 + factorInteres, numPeriodos * periodos) - 1) / factorInteres));
+            double renta = monto / (((Math.pow(1 + factorInteres, numPeriodos) - 1) / factorInteres) * (1 + factorInteres));
 
-            tvResultado.setText(String.format("Renta (R) = %.2f", renta));
+            // Aquí está la variable renta definida y usada
+            tvResultado.setText(String.format("Renta (R) = %.7f", renta));
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor ingrese valores válidos en todos los campos", Toast.LENGTH_SHORT).show();
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }

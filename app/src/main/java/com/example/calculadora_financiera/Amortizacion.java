@@ -43,7 +43,8 @@ public class Amortizacion extends AppCompatActivity {
 
             double amortizacion = renta - intereses;
 
-            tvResultado.setText(String.format("Amortización (A) = %.2f", amortizacion));
+            // Mostrar el resultado sin redondear
+            tvResultado.setText("Amortización (A) = " + amortizacion);
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
         }

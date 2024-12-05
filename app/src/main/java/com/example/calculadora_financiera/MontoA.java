@@ -42,7 +42,7 @@ public class MontoA extends AppCompatActivity {
         try {
             double renta = Double.parseDouble(etRenta.getText().toString());
             double interes = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
-            double periodos = Double.parseDouble(etPeriodos.getText().toString());
+            double periodos = Double.parseDouble(etPeriodos.getText().toString()); // Ingreso directo del número de periodos
             double numPeriodos = Double.parseDouble(etNumPeriodos.getText().toString());
 
             double monto = renta * (1 + (interes / periodos)) * ((Math.pow(1 + (interes / periodos), numPeriodos * periodos) - 1) / (interes / periodos));

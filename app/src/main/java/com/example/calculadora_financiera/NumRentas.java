@@ -30,8 +30,8 @@ public class NumRentas extends AppCompatActivity {
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
 
-        // Mostrar la fórmula
-        tvFormula.setText("Fórmula: np = ln(M / [R * (1 + i/p)] ) / ln(1 + i/p)");
+        // Mostrar la fórmula corregida
+        tvFormula.setText("Fórmula: np = ln((M / R) * (i / p) + 1) / ln(1 + (i / p))");
     }
 
     private void setupCalculateButton() {
@@ -45,9 +45,14 @@ public class NumRentas extends AppCompatActivity {
             double interes = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
             double periodos = Double.parseDouble(etPeriodos.getText().toString());
 
-            double numRentas = Math.log(monto / (renta * (1 + (interes / periodos)))) / Math.log(1 + (interes / periodos));
+            // Cálculo del número de rentas corregido
+            double ratio = 1 + (interes / periodos);
+            double numerador = Math.log((monto / renta) * (interes / periodos) + 1);
+            double denominador = Math.log(ratio);
+            double numRentas = numerador / denominador;
 
-            tvResultado.setText(String.format("Número de Rentas (np) = %.2f", numRentas));
+            // Mostrar el resultado con mayor precisión
+            tvResultado.setText(String.format("Número de Rentas (np) = %.5f", numRentas));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
         } catch (ArithmeticException e) {
