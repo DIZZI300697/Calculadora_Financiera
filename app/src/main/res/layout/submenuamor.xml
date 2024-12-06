@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnIntereses"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Intereses"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnIntereses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Intereses"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnRenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Renta"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnAmortizacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amortización"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnNuevoSaldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuevo Saldo"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btnRenta"
-        android:layout_width="match_parent"
+        android:id="@+id/btnRegresar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Renta"
-        android:layout_marginBottom="8dp"/>
-
-    <Button
-        android:id="@+id/btnAmortizacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Amortización"
-        android:layout_marginBottom="8dp"/>
-
-    <Button
-        android:id="@+id/btnNuevoSaldo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nuevo Saldo"
-        android:layout_marginBottom="8dp"/>
-</LinearLayout>
+        android:text="Regresar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"/>
+</RelativeLayout>

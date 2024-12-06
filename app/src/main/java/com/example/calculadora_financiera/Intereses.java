@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Intereses extends AppCompatActivity {
     private EditText etSaldo, etInteres, etPeriodos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class Intereses extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -28,8 +30,9 @@ public class Intereses extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
-        // Mostrar la fórmula
         tvFormula.setText("Fórmula: I = S * (i / p)");
     }
 
@@ -37,10 +40,18 @@ public class Intereses extends AppCompatActivity {
         btnCalcular.setOnClickListener(v -> calcularIntereses());
     }
 
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
+    }
+
     private void calcularIntereses() {
         try {
             double saldo = Double.parseDouble(etSaldo.getText().toString());
-            double interes = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
+            double interes = Double.parseDouble(etInteres.getText().toString()) / 100;
             double periodos = Double.parseDouble(etPeriodos.getText().toString());
 
             double intereses = saldo * (interes / periodos);
@@ -51,5 +62,12 @@ public class Intereses extends AppCompatActivity {
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etSaldo.setText("");
+        etInteres.setText("");
+        etPeriodos.setText("");
+        tvResultado.setText("");
     }
 }

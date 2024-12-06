@@ -8,11 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Plazos extends AppCompatActivity {
     private EditText etMonto, etCapital, etInteres;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +20,8 @@ public class Plazos extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -30,12 +31,22 @@ public class Plazos extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         tvFormula.setText("Fórmula: n = (M - C) / (C * i)");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularPlazos());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularPlazos() {
@@ -54,5 +65,12 @@ public class Plazos extends AppCompatActivity {
             Toast.makeText(this, "Error: División por cero", Toast.LENGTH_SHORT).show();
             Log.d("Plazos", "Error: " + e.getMessage());
         }
+    }
+
+    private void limpiarCampos() {
+        etMonto.setText("");
+        etCapital.setText("");
+        etInteres.setText("");
+        tvResultado.setText("");
     }
 }

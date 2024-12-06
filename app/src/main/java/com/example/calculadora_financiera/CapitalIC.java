@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CapitalIC extends AppCompatActivity {
     private EditText etMonto, etInteres, etPeriodos, etNumPeriodos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class CapitalIC extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -29,12 +31,22 @@ public class CapitalIC extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         tvFormula.setText("Fórmula: C = M / (1 + i/p)^(np)");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularCapitalIC());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularCapitalIC() {
@@ -52,5 +64,13 @@ public class CapitalIC extends AppCompatActivity {
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etMonto.setText("");
+        etInteres.setText("");
+        etPeriodos.setText("");
+        etNumPeriodos.setText("");
+        tvResultado.setText("");
     }
 }

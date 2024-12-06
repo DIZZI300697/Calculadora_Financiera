@@ -7,11 +7,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Capital extends AppCompatActivity {
     private EditText etMonto, etTasaInteres, etPlazos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +19,8 @@ public class Capital extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -29,12 +30,22 @@ public class Capital extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
-        tvFormula.setText("Fórmula: C = M / (1 + in)");
+        tvFormula.setText("Fórmula: C = M / (1 + i * n)");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularCapital());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularCapital() {
@@ -49,5 +60,12 @@ public class Capital extends AppCompatActivity {
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etMonto.setText("");
+        etTasaInteres.setText("");
+        etPlazos.setText("");
+        tvResultado.setText("");
     }
 }

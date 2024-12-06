@@ -8,10 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Monto extends AppCompatActivity {
     private EditText etCapital, etInteres, etPlazos;
-    private TextView tvResultado;
+    private TextView tvResultado, tvFormula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +20,8 @@ public class Monto extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -28,11 +29,22 @@ public class Monto extends AppCompatActivity {
         etInteres = findViewById(R.id.etInteres);
         etPlazos = findViewById(R.id.etPlazos);
         tvResultado = findViewById(R.id.tvResultado);
+        tvFormula = findViewById(R.id.tvFormula);
     }
 
     private void setupCalculateButton() {
         Button btnCalcular = findViewById(R.id.btnCalcular);
         btnCalcular.setOnClickListener(v -> calcularMonto());
+    }
+
+    private void setupClearButton() {
+        Button btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        Button btnRegresar = findViewById(R.id.btnRegresar);
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularMonto() {
@@ -49,5 +61,12 @@ public class Monto extends AppCompatActivity {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
             Log.d("Monto", "Error: " + e.getMessage());
         }
+    }
+
+    private void limpiarCampos() {
+        etCapital.setText("");
+        etInteres.setText("");
+        etPlazos.setText("");
+        tvResultado.setText("");
     }
 }

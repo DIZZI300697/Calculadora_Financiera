@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MontoIC extends AppCompatActivity {
     private EditText etCapital, etInteres, etPeriodos, etNumPeriodos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class MontoIC extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -29,12 +31,22 @@ public class MontoIC extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         tvFormula.setText("Fórmula: M = C * (1 + i/p)^(np)");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularMontoIC());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularMontoIC() {
@@ -52,5 +64,13 @@ public class MontoIC extends AppCompatActivity {
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etCapital.setText("");
+        etInteres.setText("");
+        etPeriodos.setText("");
+        etNumPeriodos.setText("");
+        tvResultado.setText("");
     }
 }

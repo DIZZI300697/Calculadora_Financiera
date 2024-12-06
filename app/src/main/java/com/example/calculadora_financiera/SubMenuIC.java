@@ -17,6 +17,7 @@ public class SubMenuIC extends AppCompatActivity {
         calculationType = getIntent().getStringExtra("CALCULATION_TYPE");
         Log.d("SubMenuIC", "Calculation Type: " + calculationType);
         setupSubMenuButtons();
+        setupBackButton();
     }
 
     private void setupSubMenuButtons() {
@@ -29,6 +30,11 @@ public class SubMenuIC extends AppCompatActivity {
         btnCapital.setOnClickListener(v -> navigateToCalculator("capital"));
         btnPeriodosCapitalizacion.setOnClickListener(v -> navigateToCalculator("periodos_capitalizacion"));
         btnTasaInteresCapitalizable.setOnClickListener(v -> navigateToCalculator("tasa_interes_capitalizable"));
+    }
+
+    private void setupBackButton() {
+        Button btnRegresar = findViewById(R.id.btnRegresar);
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void navigateToCalculator(String variable) {

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RentaAmor extends AppCompatActivity {
     private EditText etAmortizacion, etIntereses;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class RentaAmor extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -27,13 +29,22 @@ public class RentaAmor extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
-        // Mostrar la fórmula
         tvFormula.setText("Fórmula: R = A + I");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularRentaAmor());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularRentaAmor() {
@@ -47,5 +58,11 @@ public class RentaAmor extends AppCompatActivity {
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etAmortizacion.setText("");
+        etIntereses.setText("");
+        tvResultado.setText("");
     }
 }

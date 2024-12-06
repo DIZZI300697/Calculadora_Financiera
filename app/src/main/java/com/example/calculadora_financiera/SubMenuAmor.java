@@ -17,6 +17,7 @@ public class SubMenuAmor extends AppCompatActivity {
         calculationType = getIntent().getStringExtra("CALCULATION_TYPE");
         Log.d("SubMenuAmor", "Calculation Type: " + calculationType);
         setupSubMenuButtons();
+        setupBackButton();
     }
 
     private void setupSubMenuButtons() {
@@ -29,6 +30,11 @@ public class SubMenuAmor extends AppCompatActivity {
         btnRenta.setOnClickListener(v -> navigateToCalculator("renta"));
         btnAmortizacion.setOnClickListener(v -> navigateToCalculator("amortizacion"));
         btnNuevoSaldo.setOnClickListener(v -> navigateToCalculator("nuevo_saldo"));
+    }
+
+    private void setupBackButton() {
+        Button btnRegresar = findViewById(R.id.btnRegresar);
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void navigateToCalculator(String variable) {

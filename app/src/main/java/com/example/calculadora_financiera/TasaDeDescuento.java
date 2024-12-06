@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class TasaDeDescuento extends AppCompatActivity {
     private EditText etPrincipal, etMonto, etPlazos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class TasaDeDescuento extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -28,12 +30,22 @@ public class TasaDeDescuento extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         tvFormula.setText("Fórmula: d = (1 - (P / M)) / n");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularTasaDeDescuento());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularTasaDeDescuento() {
@@ -50,5 +62,12 @@ public class TasaDeDescuento extends AppCompatActivity {
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etPrincipal.setText("");
+        etMonto.setText("");
+        etPlazos.setText("");
+        tvResultado.setText("");
     }
 }

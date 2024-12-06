@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PeriodosDeCapitalizacion extends AppCompatActivity {
     private EditText etMonto, etCapital, etInteres, etPeriodos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class PeriodosDeCapitalizacion extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -29,12 +31,22 @@ public class PeriodosDeCapitalizacion extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         tvFormula.setText("Fórmula: np = ln(M/C) / ln(1 + i/p)");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularPeriodosDeCapitalizacion());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularPeriodosDeCapitalizacion() {
@@ -52,5 +64,13 @@ public class PeriodosDeCapitalizacion extends AppCompatActivity {
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etMonto.setText("");
+        etCapital.setText("");
+        etInteres.setText("");
+        etPeriodos.setText("");
+        tvResultado.setText("");
     }
 }

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Renta extends AppCompatActivity {
     private EditText etMonto, etInteres, etPeriodos, etNumPeriodos;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class Renta extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -29,13 +31,23 @@ public class Renta extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
         // Mostrar la fórmula ajustada
-        tvFormula.setText("Fórmula: M = R (1 + i/p) ((1 + i/p)^n - 1) / (i/p)");
+        tvFormula.setText("Fórmula: R = M * (i/p) / [(1 + i/p) * ((1 + i/p)^np - 1) / (i/p)]");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularRenta());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularRenta() {
@@ -55,12 +67,19 @@ public class Renta extends AppCompatActivity {
             double factorInteres = interes / periodos;
             double renta = monto / (((Math.pow(1 + factorInteres, numPeriodos) - 1) / factorInteres) * (1 + factorInteres));
 
-            // Aquí está la variable renta definida y usada
             tvResultado.setText(String.format("Renta (R) = %.7f", renta));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos en todos los campos", Toast.LENGTH_SHORT).show();
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero o valores incorrectos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etMonto.setText("");
+        etInteres.setText("");
+        etPeriodos.setText("");
+        etNumPeriodos.setText("");
+        tvResultado.setText("");
     }
 }

@@ -9,9 +9,10 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);  // Asegúrate de que tu archivo XML se llama "menu.xml"
+        setContentView(R.layout.menu);
 
         setupMenuButtons();
+        setupBackButton();
     }
 
     private void setupMenuButtons() {
@@ -26,6 +27,11 @@ public class Menu extends AppCompatActivity {
         btnCompoundInterest.setOnClickListener(v -> navigateToSubMenu("compound_interest"));
         btnAnnuity.setOnClickListener(v -> navigateToSubMenu("annuity"));
         btnAmortization.setOnClickListener(v -> navigateToSubMenu("amortization"));
+    }
+
+    private void setupBackButton() {
+        Button btnRegresar = findViewById(R.id.btnRegresar);
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void navigateToSubMenu(String calculationType) {

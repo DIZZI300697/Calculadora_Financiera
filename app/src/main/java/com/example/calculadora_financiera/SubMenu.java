@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class SubMenu extends AppCompatActivity {
     private String calculationType;
 
@@ -18,6 +17,7 @@ public class SubMenu extends AppCompatActivity {
         calculationType = getIntent().getStringExtra("CALCULATION_TYPE");
         Log.d("SubMenu", "Calculation Type: " + calculationType);
         setupSubMenuButtons();
+        setupBackButton();
     }
 
     private void setupSubMenuButtons() {
@@ -30,6 +30,11 @@ public class SubMenu extends AppCompatActivity {
         btnCapital.setOnClickListener(v -> navigateToCalculator("capital"));
         btnTasaInteres.setOnClickListener(v -> navigateToCalculator("tasa"));
         btnPlazo.setOnClickListener(v -> navigateToCalculator("plazo"));
+    }
+
+    private void setupBackButton() {
+        Button btnRegresar = findViewById(R.id.btnRegresar);
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void navigateToCalculator(String variable) {

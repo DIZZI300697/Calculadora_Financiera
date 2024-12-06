@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Amortizacion extends AppCompatActivity {
     private EditText etRenta, etIntereses;
     private TextView tvResultado, tvFormula;
-    private Button btnCalcular;
+    private Button btnCalcular, btnLimpiar, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class Amortizacion extends AppCompatActivity {
 
         initializeViews();
         setupCalculateButton();
+        setupClearButton();
+        setupBackButton();
     }
 
     private void initializeViews() {
@@ -27,13 +29,22 @@ public class Amortizacion extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvFormula = findViewById(R.id.tvFormula);
         btnCalcular = findViewById(R.id.btnCalcular);
+        btnLimpiar = findViewById(R.id.btnLimpiar);
+        btnRegresar = findViewById(R.id.btnRegresar);
 
-        // Mostrar la fórmula
         tvFormula.setText("Fórmula: A = R - I");
     }
 
     private void setupCalculateButton() {
         btnCalcular.setOnClickListener(v -> calcularAmortizacion());
+    }
+
+    private void setupClearButton() {
+        btnLimpiar.setOnClickListener(v -> limpiarCampos());
+    }
+
+    private void setupBackButton() {
+        btnRegresar.setOnClickListener(v -> onBackPressed());
     }
 
     private void calcularAmortizacion() {
@@ -43,10 +54,15 @@ public class Amortizacion extends AppCompatActivity {
 
             double amortizacion = renta - intereses;
 
-            // Mostrar el resultado sin redondear
             tvResultado.setText("Amortización (A) = " + amortizacion);
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void limpiarCampos() {
+        etRenta.setText("");
+        etIntereses.setText("");
+        tvResultado.setText("");
     }
 }
