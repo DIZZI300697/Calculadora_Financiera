@@ -1,0 +1,17 @@
+<!-- res/drawable/gold_border_button.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#33FFFFFF"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp"/>
+            <stroke
+                android:width="2dp"
+                android:color="#FFD700"/> <!-- Color dorado -->
+        </shape>
+    </item>
+</layer-list>
